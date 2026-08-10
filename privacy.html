@@ -1,186 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Privacy Policy | Ariser Gaming</title>
+<title>Privacy Policy | Ariser Gaming</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --void:   #0b0c0d;
+        --panel:  #14161a;
+        --raised: #1a1d22;
+        --rule:   #23262b;
+        --amber:  #e09a46;
+        --signal: #c4403a;
+        --text:   #d6d8db;
+        --dim:    #7c8288;
+
+        --display: "Saira Condensed", "Arial Narrow", sans-serif;
+        --body:    "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+        --mono:    "IBM Plex Mono", ui-monospace, "Courier New", monospace;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: var(--void);
+        color: var(--text);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.72;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible {
+        outline: 2px solid var(--amber);
+        outline-offset: 3px;
+    }
+
+    /* ---------- top strip ---------- */
+
+    .strip {
+        position: relative;
+        background: var(--amber);
+        color: #17140f;
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 7px 24px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        overflow: hidden;
+    }
+
+    .strip span {
+        position: relative;
+        z-index: 2;
+        white-space: nowrap;
+    }
+
+    .strip::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.14) 0 1px,
+            transparent 1px 3px
+        );
+        animation: drift 5s linear infinite;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    @keyframes drift {
+        from { transform: translateY(0); }
+        to   { transform: translateY(3px); }
+    }
+
+    /* ---------- masthead ---------- */
+
+    .masthead {
+        border-bottom: 1px solid var(--rule);
+        background: var(--panel);
+    }
+
+    .masthead-inner {
+        max-width: 860px;
+        margin: auto;
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+    }
+
+    .sigil {
+        width: 32px;
+        height: 32px;
+        flex: none;
+        border: 1px solid var(--amber);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--amber);
+    }
+
+    .wordmark {
+        font-family: var(--display);
+        font-size: 19px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #fff;
+        line-height: 1.1;
+    }
+
+    .back {
+        font-family: var(--mono);
+        font-size: 10.5px;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--dim);
+        text-decoration: none;
+        border: 1px solid var(--rule);
+        padding: 9px 14px;
+        white-space: nowrap;
+        transition: color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .back:hover,
+    .back:focus-visible {
+        color: var(--amber);
+        border-color: var(--amber);
+    }
+
+    /* ---------- document head ---------- */
+
+    main {
+        flex: 1;
+        width: 100%;
+        max-width: 860px;
+        margin: auto;
+        padding: 62px 24px 84px;
+    }
+
+    .doc-number {
+        font-family: var(--display);
+        font-size: 58px;
+        font-weight: 700;
+        line-height: 0.9;
+        color: var(--amber);
+    }
+
+    h1 {
+        font-family: var(--display);
+        font-size: clamp(36px, 6.5vw, 56px);
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 6px 0 16px;
+    }
+
+    .updated {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--dim);
+        padding-bottom: 22px;
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: 46px;
+    }
+
+    /* ---------- body copy ---------- */
+
+    section {
+        margin-bottom: 44px;
+        scroll-margin-top: 24px;
+    }
+
+    section:last-of-type {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-family: var(--display);
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.045em;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+    }
+
+    h2::before {
+        content: attr(data-n);
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        color: var(--amber);
+        flex: none;
+    }
+
+    p {
+        color: #a4a9af;
+        margin-bottom: 15px;
+        max-width: 68ch;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0 0 17px;
+        max-width: 68ch;
+    }
+
+    li {
+        color: #a4a9af;
+        padding-left: 20px;
+        margin-bottom: 7px;
+        position: relative;
+    }
+
+    li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.72em;
+        width: 7px;
+        height: 1px;
+        background: var(--amber);
+    }
+
+    a {
+        color: var(--amber);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(224, 154, 70, 0.35);
+        transition: border-color 0.18s ease;
+    }
+
+    a:hover {
+        border-bottom-color: var(--amber);
+    }
+
+    .contact {
+        margin-top: 52px;
+        border-left: 2px solid var(--signal);
+        background: var(--panel);
+        padding: 22px 26px;
+    }
+
+    .contact h3 {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--signal);
+        margin-bottom: 9px;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer {
+        border-top: 1px solid var(--rule);
+        background: var(--panel);
+    }
+
+    .footer-inner {
+        max-width: 860px;
+        margin: auto;
+        padding: 26px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 18px;
+        flex-wrap: wrap;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dim);
+    }
+
+    .footer-inner strong {
+        color: var(--text);
+        font-weight: 500;
+    }
+
+    .footer-inner a {
+        border: none;
+        color: var(--dim);
+    }
+
+    .footer-inner a:hover {
+        color: var(--amber);
+    }
+
+    /* ---------- responsive ---------- */
+
+    @media (max-width: 760px) {
+        .strip {
+            font-size: 9.5px;
+            letter-spacing: 0.14em;
+            padding: 7px 16px;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #111214;
-            color: #e3e5e8;
-            line-height: 1.7;
+        .strip span:nth-child(2) {
+            display: none;
         }
 
-        header {
-            background: #18191c;
-            border-bottom: 1px solid #2b2d31;
-            padding: 20px 30px;
+        main {
+            padding: 42px 20px 62px;
         }
 
-        .nav {
-            max-width: 900px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .brand-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: #5865f2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: white;
-        }
-
-        .home {
-            color: #b5bac1;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .home:hover {
-            color: #ffffff;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 60px 30px;
-        }
-
-        .title {
-            margin-bottom: 45px;
-        }
-
-        .title h1 {
-            color: #ffffff;
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
-
-        .updated {
-            color: #72767d;
-            font-size: 14px;
-        }
-
-        .content {
-            background: #18191c;
-            border: 1px solid #2b2d31;
-            border-radius: 12px;
-            padding: 40px;
+        .doc-number {
+            font-size: 44px;
         }
 
         h2 {
-            color: #ffffff;
-            font-size: 22px;
-            margin-top: 35px;
-            margin-bottom: 12px;
+            font-size: 21px;
+            gap: 11px;
         }
+    }
 
-        h2:first-child {
-            margin-top: 0;
-        }
-
-        p {
-            color: #b5bac1;
-            margin-bottom: 16px;
-        }
-
-        ul {
-            color: #b5bac1;
-            margin: 0 0 18px 25px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        a {
-            color: #7289da;
-        }
-
-        footer {
-            border-top: 1px solid #2b2d31;
-            background: #18191c;
-            text-align: center;
-            padding: 30px;
-            color: #72767d;
-            font-size: 14px;
-            margin-top: 40px;
-        }
-
-        footer strong {
-            color: #b5bac1;
-        }
-
-        @media (max-width: 700px) {
-            .container {
-                padding: 40px 20px;
-            }
-
-            .content {
-                padding: 25px;
-            }
-
-            .title h1 {
-                font-size: 34px;
-            }
-        }
-    </style>
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .strip::after { animation: none; }
+        .back, a { transition: none; }
+    }
+</style>
 </head>
 
 <body>
 
-<header>
-    <div class="nav">
+<div class="strip">
+    <span>Ariser Gaming</span>
+    <span>Privacy policy</span>
+    <span>Updated 08&middot;08&middot;2026</span>
+</div>
 
+<header class="masthead">
+    <div class="masthead-inner">
         <div class="brand">
-            <div class="brand-icon">A</div>
-            Ariser Gaming
+            <div class="sigil">AG</div>
+            <div class="wordmark">Ariser Gaming</div>
         </div>
 
-        <a class="home" href="index.html">
-            ← Back to Legal
-        </a>
-
+        <a class="back" href="index.html">Back to legal</a>
     </div>
 </header>
 
-<main class="container">
+<main>
 
-    <div class="title">
-        <h1>Privacy Policy</h1>
-        <div class="updated">
-            Last Updated: 8 August 2026
-        </div>
-    </div>
+    <div class="doc-number">02</div>
 
-    <div class="content">
+    <h1>Privacy policy</h1>
 
-        <h2>1. Introduction</h2>
+    <p class="updated">Last updated 8 August 2026</p>
+
+    <section>
+        <h2 data-n="01">Introduction</h2>
 
         <p>
             This Privacy Policy explains how Ariser Gaming ("Ariser Gaming",
@@ -193,9 +410,10 @@
             We aim to collect and process only information that is reasonably
             necessary for the operation and improvement of our applications.
         </p>
+    </section>
 
-
-        <h2>2. Information We May Process</h2>
+    <section>
+        <h2 data-n="02">Information we may process</h2>
 
         <p>
             Depending on the application and features you use, we may process
@@ -219,13 +437,12 @@
             The exact information processed depends on the specific Ariser
             Gaming application and the features enabled within it.
         </p>
+    </section>
 
+    <section>
+        <h2 data-n="03">How we use information</h2>
 
-        <h2>3. How We Use Information</h2>
-
-        <p>
-            Information may be used for purposes including:
-        </p>
+        <p>Information may be used for purposes including:</p>
 
         <ul>
             <li>Providing and operating application features.</li>
@@ -235,9 +452,10 @@
             <li>Preventing abuse or misuse of our services.</li>
             <li>Improving the reliability and functionality of our applications.</li>
         </ul>
+    </section>
 
-
-        <h2>4. Discord Information</h2>
+    <section>
+        <h2 data-n="04">Discord information</h2>
 
         <p>
             Our applications operate through Discord. Discord may provide
@@ -247,31 +465,29 @@
 
         <p>
             Your use of Discord is also governed by
-            <a href="https://discord.com/privacy" target="_blank" rel="noopener noreferrer">
-                Discord's Privacy Policy
-            </a>.
+            <a href="https://discord.com/privacy" target="_blank" rel="noopener noreferrer">Discord's Privacy Policy</a>.
         </p>
+    </section>
 
+    <section>
+        <h2 data-n="05">Data sharing</h2>
 
-        <h2>5. Data Sharing</h2>
-
-        <p>
-            We do not sell personal information to third parties.
-        </p>
+        <p>We do not sell personal information to third parties.</p>
 
         <p>
             Information may be processed by third-party infrastructure or
             service providers where necessary to operate the application,
-            such as hosting providers, databases, logging systems, or
-            services required for technical functionality.
+            such as hosting providers, databases, logging systems, or services
+            required for technical functionality.
         </p>
+    </section>
 
-
-        <h2>6. Data Retention</h2>
+    <section>
+        <h2 data-n="06">Data retention</h2>
 
         <p>
-            Information may be retained for as long as reasonably necessary
-            to provide application functionality, maintain security, resolve
+            Information may be retained for as long as reasonably necessary to
+            provide application functionality, maintain security, resolve
             technical issues, or satisfy legitimate operational requirements.
         </p>
 
@@ -279,22 +495,24 @@
             Where information is no longer required, it may be deleted or
             anonymised where reasonably practical.
         </p>
+    </section>
 
-
-        <h2>7. Data Security</h2>
+    <section>
+        <h2 data-n="07">Data security</h2>
 
         <p>
-            We take reasonable measures to protect information processed by
-            our applications against unauthorized access, alteration,
-            disclosure, or destruction.
+            We take reasonable measures to protect information processed by our
+            applications against unauthorized access, alteration, disclosure,
+            or destruction.
         </p>
 
         <p>
             However, no internet-based service can guarantee absolute security.
         </p>
+    </section>
 
-
-        <h2>8. Your Rights and Requests</h2>
+    <section>
+        <h2 data-n="08">Your rights and requests</h2>
 
         <p>
             If you believe that an Ariser Gaming application has stored
@@ -303,9 +521,10 @@
             administration team through the official Ariser Gaming Discord
             community.
         </p>
+    </section>
 
-
-        <h2>9. Children's Privacy</h2>
+    <section>
+        <h2 data-n="09">Children's privacy</h2>
 
         <p>
             Our applications are not intended to knowingly collect personal
@@ -314,12 +533,13 @@
         </p>
 
         <p>
-            Users should comply with Discord's applicable age requirements
-            and policies when using our applications.
+            Users should comply with Discord's applicable age requirements and
+            policies when using our applications.
         </p>
+    </section>
 
-
-        <h2>10. Third-Party Services</h2>
+    <section>
+        <h2 data-n="10">Third-party services</h2>
 
         <p>
             Our applications may depend on third-party services, including
@@ -330,35 +550,36 @@
             Those services may process information according to their own
             privacy policies and terms.
         </p>
+    </section>
 
-
-        <h2>11. Changes to This Policy</h2>
-
-        <p>
-            We may update this Privacy Policy when our applications,
-            practices, or legal requirements change.
-        </p>
+    <section>
+        <h2 data-n="11">Changes to this policy</h2>
 
         <p>
-            The latest version will always be available at this address.
+            We may update this Privacy Policy when our applications, practices,
+            or legal requirements change.
         </p>
 
+        <p>The latest version will always be available at this address.</p>
+    </section>
 
-        <h2>12. Contact</h2>
+    <section class="contact">
+        <h3>Contact</h3>
 
         <p>
-            For privacy-related questions or requests, please contact the
-            Ariser Gaming administration team through the official Ariser
-            Gaming Discord community.
+            For privacy-related questions or requests, contact the Ariser Gaming
+            administration team through the official Ariser Gaming Discord
+            community.
         </p>
-
-    </div>
+    </section>
 
 </main>
 
 <footer>
-    <strong>Ariser Gaming</strong><br><br>
-    Official legal documentation for Ariser Gaming applications.
+    <div class="footer-inner">
+        <span><strong>Ariser Gaming</strong></span>
+        <span><a href="index.html">Legal &amp; policies</a></span>
+    </div>
 </footer>
 
 </body>
