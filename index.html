@@ -1,219 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ariser Gaming | Legal</title>
+<title>Ariser Gaming | Legal &amp; Policies</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --void:   #0b0c0d;
+        --panel:  #14161a;
+        --raised: #1a1d22;
+        --rule:   #23262b;
+        --amber:  #e09a46;
+        --signal: #c4403a;
+        --text:   #d6d8db;
+        --dim:    #7c8288;
+
+        --display: "Saira Condensed", "Arial Narrow", sans-serif;
+        --body:    "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+        --mono:    "IBM Plex Mono", ui-monospace, "Courier New", monospace;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: var(--void);
+        color: var(--text);
+        font-family: var(--body);
+        font-size: 16px;
+        line-height: 1.65;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible,
+    .record:focus-visible {
+        outline: 2px solid var(--amber);
+        outline-offset: 3px;
+    }
+
+    /* ---------- classification strip : the signature element ---------- */
+
+    .classification {
+        position: relative;
+        background: var(--amber);
+        color: #17140f;
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 7px 24px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        overflow: hidden;
+    }
+
+    .classification span {
+        position: relative;
+        z-index: 2;
+        white-space: nowrap;
+    }
+
+    .classification::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.14) 0 1px,
+            transparent 1px 3px
+        );
+        animation: drift 5s linear infinite;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    @keyframes drift {
+        from { transform: translateY(0); }
+        to   { transform: translateY(3px); }
+    }
+
+    /* ---------- masthead ---------- */
+
+    .masthead {
+        border-bottom: 1px solid var(--rule);
+        background: var(--panel);
+    }
+
+    .masthead-inner {
+        max-width: 980px;
+        margin: auto;
+        padding: 22px 24px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .sigil {
+        width: 34px;
+        height: 34px;
+        flex: none;
+        border: 1px solid var(--amber);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-family: var(--mono);
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--amber);
+    }
+
+    .wordmark {
+        font-family: var(--display);
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #fff;
+        line-height: 1.1;
+    }
+
+    .wordmark small {
+        display: block;
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+        color: var(--dim);
+        text-transform: uppercase;
+    }
+
+    /* ---------- document header ---------- */
+
+    main {
+        flex: 1;
+        max-width: 980px;
+        margin: auto;
+        width: 100%;
+        padding: 68px 24px 90px;
+    }
+
+    .meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        background: var(--rule);
+        border: 1px solid var(--rule);
+        margin-bottom: 34px;
+        font-family: var(--mono);
+    }
+
+    .meta div {
+        background: var(--panel);
+        padding: 13px 16px;
+    }
+
+    .meta dt {
+        font-size: 9.5px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dim);
+        margin-bottom: 4px;
+    }
+
+    .meta dd {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+    }
+
+    h1 {
+        font-family: var(--display);
+        font-size: clamp(38px, 7vw, 62px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.005em;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 18px;
+    }
+
+    h1 em {
+        font-style: normal;
+        color: var(--amber);
+    }
+
+    .standfirst {
+        font-size: 17px;
+        color: #a9aeb4;
+        max-width: 58ch;
+        margin-bottom: 56px;
+    }
+
+    /* ---------- file records ---------- */
+
+    .records-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--dim);
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: 0;
+    }
+
+    .record {
+        display: grid;
+        grid-template-columns: 78px 1fr auto;
+        gap: 28px;
+        align-items: center;
+        padding: 26px 4px;
+        border-bottom: 1px solid var(--rule);
+        text-decoration: none;
+        color: inherit;
+        transition: background 0.18s ease, padding-left 0.18s ease;
+    }
+
+    .record:hover,
+    .record:focus-visible {
+        background: var(--raised);
+        padding-left: 14px;
+    }
+
+    .ref {
+        font-family: var(--display);
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--amber);
+        line-height: 1;
+    }
+
+    .ref small {
+        display: block;
+        font-family: var(--mono);
+        color: var(--dim);
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin-top: 6px;
+    }
+
+    .record h2 {
+        font-family: var(--display);
+        font-size: 25px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 5px;
+        line-height: 1.15;
+    }
+
+    .record p {
+        font-size: 15px;
+        color: var(--dim);
+        max-width: 52ch;
+    }
+
+    .open {
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--amber);
+        border: 1px solid var(--rule);
+        padding: 10px 16px;
+        white-space: nowrap;
+        transition: border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .record:hover .open,
+    .record:focus-visible .open {
+        border-color: var(--amber);
+        background: rgba(224, 154, 70, 0.09);
+    }
+
+    /* ---------- notice ---------- */
+
+    .notice {
+        margin-top: 52px;
+        border-left: 2px solid var(--signal);
+        background: var(--panel);
+        padding: 20px 24px;
+    }
+
+    .notice h3 {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--signal);
+        margin-bottom: 8px;
+    }
+
+    .notice p {
+        font-size: 15px;
+        color: var(--dim);
+        max-width: 62ch;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer {
+        border-top: 1px solid var(--rule);
+        background: var(--panel);
+    }
+
+    .footer-inner {
+        max-width: 980px;
+        margin: auto;
+        padding: 28px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 18px;
+        flex-wrap: wrap;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dim);
+    }
+
+    .footer-inner strong {
+        color: var(--text);
+        font-weight: 500;
+    }
+
+    /* ---------- responsive ---------- */
+
+    @media (max-width: 760px) {
+        .classification {
+            font-size: 9.5px;
+            letter-spacing: 0.14em;
+            padding: 7px 16px;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #111214;
-            color: #e3e5e8;
-            min-height: 100vh;
+        .classification span:nth-child(2) {
+            display: none;
         }
 
-        header {
-            background: #18191c;
-            border-bottom: 1px solid #2b2d31;
-            padding: 20px 30px;
+        .meta {
+            grid-template-columns: 1fr;
         }
 
-        .nav {
-            max-width: 1000px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        main {
+            padding: 46px 20px 64px;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffffff;
+        .record {
+            grid-template-columns: 1fr;
+            gap: 14px;
+            align-items: start;
         }
 
-        .brand-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: #5865f2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: white;
+        .record:hover,
+        .record:focus-visible {
+            padding-left: 4px;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 80px 30px;
+        .open {
+            justify-self: start;
         }
+    }
 
-        .hero {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
 
-        .hero h1 {
-            font-size: 44px;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
+        .classification::after { animation: none; }
 
-        .hero p {
-            font-size: 18px;
-            color: #b5bac1;
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.6;
-        }
+        .record,
+        .open { transition: none; }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: #18191c;
-            border: 1px solid #2b2d31;
-            border-radius: 12px;
-            padding: 30px;
-            transition: 0.2s ease;
-        }
-
-        .card:hover {
-            border-color: #5865f2;
-            transform: translateY(-2px);
-        }
-
-        .card h2 {
-            color: #ffffff;
-            margin-bottom: 12px;
-            font-size: 22px;
-        }
-
-        .card p {
-            color: #b5bac1;
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 11px 18px;
-            background: #5865f2;
-            color: white;
-            text-decoration: none;
-            border-radius: 7px;
-            font-weight: 600;
-            transition: 0.2s ease;
-        }
-
-        .button:hover {
-            background: #4752c4;
-        }
-
-        footer {
-            border-top: 1px solid #2b2d31;
-            background: #18191c;
-            text-align: center;
-            padding: 30px;
-            color: #72767d;
-            font-size: 14px;
-            margin-top: 60px;
-        }
-
-        footer strong {
-            color: #b5bac1;
-        }
-
-        @media (max-width: 700px) {
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            .container {
-                padding: 60px 20px;
-            }
-        }
-    </style>
+        .record:hover,
+        .record:focus-visible { padding-left: 4px; }
+    }
+</style>
 </head>
 
 <body>
 
-<header>
-    <div class="nav">
-        <div class="brand">
-            <div class="brand-icon">A</div>
+<div class="classification">
+    <span>Ariser Gaming</span>
+    <span>Legal &amp; policies</span>
+    <span>Updated 08&middot;08&middot;2026</span>
+</div>
+
+<header class="masthead">
+    <div class="masthead-inner">
+        <div class="sigil">AG</div>
+
+        <div class="wordmark">
             Ariser Gaming
+            <small>Legal &amp; policies</small>
         </div>
     </div>
 </header>
 
-<main class="container">
+<main>
 
-    <section class="hero">
-        <h1>Legal & Policies</h1>
+    <dl class="meta">
+        <div>
+            <dt>Applies to</dt>
+            <dd>Ariser Gaming applications &amp; services</dd>
+        </div>
+        <div>
+            <dt>Maintained by</dt>
+            <dd>Ariser Gaming administration</dd>
+        </div>
+        <div>
+            <dt>Last updated</dt>
+            <dd>8 August 2026</dd>
+        </div>
+    </dl>
 
+    <h1>Legal &amp;<br><em>policies</em></h1>
+
+    <p class="standfirst">
+        These cover the Ariser Gaming Discord applications and the services
+        around them. Both are written to be read, not skimmed past.
+    </p>
+
+    <p class="records-label">Documents</p>
+
+    <a class="record" href="terms.html">
+        <span class="ref">
+            01
+            <small>Terms</small>
+        </span>
+
+        <span>
+            <h2>Terms of service</h2>
+            <p>
+                What you agree to when you use our applications, what we expect
+                of you, and what happens if those expectations are not met.
+            </p>
+        </span>
+
+        <span class="open">Open document</span>
+    </a>
+
+    <a class="record" href="privacy.html">
+        <span class="ref">
+            02
+            <small>Privacy</small>
+        </span>
+
+        <span>
+            <h2>Privacy policy</h2>
+            <p>
+                What information our applications handle, why they need it, how
+                long it is kept, and how to ask for it to be removed.
+            </p>
+        </span>
+
+        <span class="open">Open document</span>
+    </a>
+
+    <section class="notice">
+        <h3>Something unclear</h3>
         <p>
-            Official legal information for Ariser Gaming Discord applications
-            and services.
+            If any part of these documents does not make sense, ask in the
+            Discord before you agree to it. Administration will answer, and if
+            the wording is the problem we will change the wording.
         </p>
-    </section>
-
-    <section class="cards">
-
-        <div class="card">
-            <h2>Terms of Service</h2>
-
-            <p>
-                Read the terms governing the use of Ariser Gaming Discord
-                applications and associated services.
-            </p>
-
-            <a class="button" href="terms.html">
-                View Terms of Service
-            </a>
-        </div>
-
-        <div class="card">
-            <h2>Privacy Policy</h2>
-
-            <p>
-                Learn what information may be processed by our applications,
-                why it is used, and how it is handled.
-            </p>
-
-            <a class="button" href="privacy.html">
-                View Privacy Policy
-            </a>
-        </div>
-
     </section>
 
 </main>
 
 <footer>
-    <strong>Ariser Gaming</strong><br><br>
-    Official legal documentation for Ariser Gaming applications.<br>
-    Last Updated: 8 August 2026
+    <div class="footer-inner">
+        <span><strong>Ariser Gaming</strong></span>
+        <span>Last updated 8 August 2026</span>
+    </div>
 </footer>
 
 </body>
